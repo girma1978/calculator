@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: flex;
+            width: 19.5%;  /* Increased from 13% to 19.5% */
+            background-color: aqua;
+            margin: auto;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 45px;  /* Increased from 30px to 45px */
+            height: 60px;  /* Increased from 40px to 60px */
+            border-radius: 8px;
+            background-color: honeydew;
+            color: black;
+            padding: 4.5px;  /* Increased from 3px to 4.5px */
+            margin: 4.5px;   /* Increased from 3px to 4.5px */
+            border: 4.5pt solid white;  /* Increased from 3pt to 4.5pt */
+            cursor: pointer;
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);  /* Increased shadow size */
+        }
+
+        .cn {
+            margin: 4.5px;  /* Increased from 3px to 4.5px */
+        }
+
+        #display, #clear {
+          
+            border-radius: 5px;
+            height: 30px;  /* Increased from 30px to 45px */
+          
+            color:black;
+            text-align: right;
+        }
+         #clear {
+          
+          border-radius: 5px;
+          height: 36px;  /* Increased from 30px to 45px */
+        
+          color:black;
+          text-align: right;
+      }
+        #ind, .row
+        {
+            padding:4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h3>Simple Calculator</h3>
+        <div id="ind">
+            <input type="text" id="display" readonly>
+            <button id="clear">C</button>
+        </div>
+       
+        <div class="row">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('/')">/</button>
+        </div>
+        <div class="row">
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')">*</button>
+        </div>
+        <div class="row">
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('-')">-</button>
+        </div>
+        <div class="row">
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculateResult()">=</button>
+            <button onclick="appendToDisplay('+')">+</button>
+        </div>
+    </div>
+    <script>
+        // Function to append the clicked value to the display
+        function appendToDisplay(value) {
+            let display = document.getElementById("display");
+            display.value += value;
+        }
+        // Function to clear the display
+        document.getElementById("clear").onclick = function() {
+            let display = document.getElementById("display");
+            display.value = '';
+        }
+        // Function to calculate the result
+        function calculateResult() {
+            try {
+                let result = eval(document.getElementById("display").value);
+                document.getElementById("display").value = result;
+            } catch (error) {
+                document.getElementById("display").value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
