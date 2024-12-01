@@ -16,7 +16,7 @@
         #container {
             display: flex;
             flex-direction: column;
-            width: 20%;  /* Default width for larger screens */
+            width: 90%;  /* Default width for mobile devices */
             background-color: aqua;
             margin: auto;
             border-radius: 10px;
@@ -30,7 +30,7 @@
         }
 
         button {
-            width: 45px;
+            width: 60px; /* Button size adjusted for mobile */
             height: 60px;
             border-radius: 8px;
             background-color: honeydew;
@@ -43,10 +43,9 @@
             box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);
         }
 
-       
-        #clear{
-            width: 60px;
-            height: 45px;
+        #clear {
+            width: 75px;
+            height: 60px;
             border-radius: 8px;
             background-color: honeydew;
             color: black;
@@ -58,62 +57,70 @@
             box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);
         }
 
-        #display{
+        #display {
             border-radius: 5px;
-            height:20px;
-            width:170px;
+            height: 60px;
+            width: 100%;
             color: black;
             text-align: right;
-            font-size: 1.2em;
+            font-size: 1.8em; /* Adjust font size for easy reading on small screens */
             padding: 10px;
-            margin:auto;
+            margin-bottom: 10px; /* Add margin below display */
         }
 
-        #ind
-        {
-
-        display: flex;
-        flex-direction: row;
+        #ind {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+
         .row {
             display: flex;
             justify-content: space-between;
         }
 
-        .row button{
-            flex: 1; /* Makes buttons expand equally */
-            font-size: 1.2em;
+        .row button {
+            flex: 1;
+            font-size: 1.2em; /* Increase font size for button labels */
         }
 
-        /* Responsive Styles */
-        /* For tablets and larger screens */
+        /* Responsive Styles for Tablets and Larger Screens */
         @media (max-width: 768px) {
             #container {
-                width: 50%;  /* Adjusting container width for smaller screens */
-            }
-        }
-
-        /* For mobile phones */
-        @media (max-width: 480px) {
-            #container {
-                width: 80%;  /* Further reduce width on smaller screens */
-                padding: 5px;
+                width: 60%;  /* Adjust container width for tablets */
             }
 
             button {
-                width: 60px;  /* Increase button width for easier tapping */
-                height: 50px; /* Increase button height */
-                font-size: 1.4em; /* Increase font size */
-                margin: 3px;
+                width: 50px; /* Adjust button width for tablets */
+                height: 50px;
             }
 
-         #display {
-                font-size: 1.5em; /* Increase font size for better readability */
-               
+            #display {
+                font-size: 1.6em; /* Adjust display font size for medium devices */
             }
 
             h3 {
-                font-size: 1.2em;  /* Slightly smaller title on mobile */
+                font-size: 1.3em; /* Adjust heading size */
+            }
+        }
+
+        /* Responsive Styles for Larger Screens */
+        @media (min-width: 769px) {
+            #container {
+                width: 20%;  /* Adjust width for larger screens */
+            }
+
+            button {
+                width: 50px; /* Keep button size small for larger screens */
+                height: 50px;
+            }
+
+            #display {
+                font-size: 1.4em; /* Smaller font size for display on larger devices */
+            }
+
+            h3 {
+                font-size: 1.5em;  /* Title size for larger screens */
             }
         }
     </style>
