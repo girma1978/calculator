@@ -7,120 +7,138 @@
     <style>
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7fa; /* Soft background color */
         }
 
         #container {
             display: flex;
             flex-direction: column;
-            width: 90%;  /* Default width for mobile devices */
-            background-color: aqua;
-            margin: auto;
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 50px;
+            align-items: center;
+            width: 100%;
+            max-width: 350px; /* Max width for container */
+            background-color: #ffffff; /* White background for the calculator */
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         h3 {
-            text-align: center;
             font-size: 1.5em;
-        }
-
-        button {
-            width: 60px; /* Button size adjusted for mobile */
-            height: 60px;
-            border-radius: 8px;
-            background-color: honeydew;
-            color: black;
-            padding: 4.5px;
-            margin: 4.5px;
-            border: 4.5pt solid white;
-            cursor: pointer;
-            transition: box-shadow 0.3s ease-in-out;
-            box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);
-        }
-
-        #clear {
-            width: 75px;
-            height: 60px;
-            border-radius: 8px;
-            background-color: honeydew;
-            color: black;
-            padding: 4.5px;
-            margin: 4.5px;
-            border: 4.5pt solid white;
-            cursor: pointer;
-            transition: box-shadow 0.3s ease-in-out;
-            box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);
+            color: #00796b; /* Dark teal for heading */
+            margin: 0 0 15px;
         }
 
         #display {
-            border-radius: 5px;
-            height: 60px;
             width: 100%;
-            color: black;
+            height: 60px;
+            font-size: 2em;
             text-align: right;
-            font-size: 1.8em; /* Adjust font size for easy reading on small screens */
             padding: 10px;
-            margin-bottom: 10px; /* Add margin below display */
+            margin-bottom: 20px;
+            border: 2px solid #00796b;
+            border-radius: 8px;
+            background-color: #e0f2f1;
+            color: #00796b;
+            box-sizing: border-box;
         }
 
-        #ind {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        #clear {
+            width: 100%;
+            height: 60px;
+            background-color: #ffccbc;
+            color: #d32f2f;
+            border-radius: 8px;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        #clear:hover {
+            background-color: #ff8a65;
         }
 
         .row {
             display: flex;
+            width: 100%;
             justify-content: space-between;
+            margin-bottom: 10px;
         }
 
-        .row button {
-            flex: 1;
-            font-size: 1.2em; /* Increase font size for button labels */
+        button {
+            width: 22%;
+            height: 60px;
+            background-color: #ffffff;
+            color: #00796b;
+            font-size: 1.5em;
+            border: 2px solid #00796b;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* Responsive Styles for Tablets and Larger Screens */
+        button:hover {
+            background-color: #00796b;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+
+        /* Responsive Styles for Tablets and Smaller Screens */
         @media (max-width: 768px) {
             #container {
-                width: 60%;  /* Adjust container width for tablets */
+                width: 90%;
+                padding: 15px;
             }
 
             button {
-                width: 50px; /* Adjust button width for tablets */
+                width: 20%; /* Adjust button size for smaller screens */
                 height: 50px;
             }
 
             #display {
-                font-size: 1.6em; /* Adjust display font size for medium devices */
+                font-size: 1.6em;
+                padding: 8px;
+            }
+
+            #clear {
+                height: 55px;
+                font-size: 1.3em;
             }
 
             h3 {
-                font-size: 1.3em; /* Adjust heading size */
+                font-size: 1.3em;
             }
         }
 
         /* Responsive Styles for Larger Screens */
         @media (min-width: 769px) {
             #container {
-                width: 20%;  /* Adjust width for larger screens */
+                width: 25%; /* Adjust width for larger screens */
             }
 
             button {
-                width: 50px; /* Keep button size small for larger screens */
-                height: 50px;
+                width: 22%;
             }
 
             #display {
-                font-size: 1.4em; /* Smaller font size for display on larger devices */
+                font-size: 1.8em;
             }
 
             h3 {
-                font-size: 1.5em;  /* Title size for larger screens */
+                font-size: 1.5em;
             }
         }
     </style>
@@ -128,11 +146,9 @@
 <body>
     <div id="container">
         <h3>Simple Calculator</h3>
-        <div id="ind">
-            <input type="text" id="display" readonly>
-            <button id="clear">C</button>
-        </div>
-       
+        <input type="text" id="display" readonly>
+        <button id="clear">C</button>
+        
         <div class="row">
             <button onclick="appendToDisplay('7')">7</button>
             <button onclick="appendToDisplay('8')">8</button>
@@ -160,17 +176,16 @@
     </div>
 
     <script>
-        // Function to append the clicked value to the display
         function appendToDisplay(value) {
             let display = document.getElementById("display");
             display.value += value;
         }
-        // Function to clear the display
+
         document.getElementById("clear").onclick = function() {
             let display = document.getElementById("display");
             display.value = '';
         }
-        // Function to calculate the result
+
         function calculateResult() {
             try {
                 let result = eval(document.getElementById("display").value);
