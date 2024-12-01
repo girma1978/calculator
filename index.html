@@ -3,54 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Responsive Calculator</title>
     <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
         #container {
             display: flex;
-            width: 19.5%;  /* Increased from 13% to 19.5% */
+            flex-direction: column;
+            width: 20%;  /* Default width for larger screens */
             background-color: aqua;
             margin: auto;
-            flex-direction: column;
             border-radius: 10px;
+            padding: 10px;
+            margin-top: 50px;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 1.5em;
         }
 
         button {
-            width: 45px;  /* Increased from 30px to 45px */
-            height: 60px;  /* Increased from 40px to 60px */
+            width: 45px;
+            height: 60px;
             border-radius: 8px;
             background-color: honeydew;
             color: black;
-            padding: 4.5px;  /* Increased from 3px to 4.5px */
-            margin: 4.5px;   /* Increased from 3px to 4.5px */
-            border: 4.5pt solid white;  /* Increased from 3pt to 4.5pt */
+            padding: 4.5px;
+            margin: 4.5px;
+            border: 4.5pt solid white;
             cursor: pointer;
             transition: box-shadow 0.3s ease-in-out;
-            box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);  /* Increased shadow size */
-        }
-
-        .cn {
-            margin: 4.5px;  /* Increased from 3px to 4.5px */
+            box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);
         }
 
         #display, #clear {
-          
+            width: 100%;
             border-radius: 5px;
-            height: 30px;  /* Increased from 30px to 45px */
-          
-            color:black;
+            height: 45px;
+            color: black;
             text-align: right;
+            font-size: 1.2em;
+            padding: 10px;
         }
-         #clear {
-          
-          border-radius: 5px;
-          height: 36px;  /* Increased from 30px to 45px */
-        
-          color:black;
-          text-align: right;
-      }
-        #ind, .row
-        {
-            padding:4px;
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .row button {
+            flex: 1; /* Makes buttons expand equally */
+            font-size: 1.2em;
+        }
+
+        /* Responsive Styles */
+        /* For tablets and larger screens */
+        @media (max-width: 768px) {
+            #container {
+                width: 50%;  /* Adjusting container width for smaller screens */
+            }
+        }
+
+        /* For mobile phones */
+        @media (max-width: 480px) {
+            #container {
+                width: 80%;  /* Further reduce width on smaller screens */
+                padding: 5px;
+            }
+
+            button {
+                width: 60px;  /* Increase button width for easier tapping */
+                height: 50px; /* Increase button height */
+                font-size: 1.4em; /* Increase font size */
+                margin: 3px;
+            }
+
+            #display {
+                font-size: 1.5em; /* Increase font size for better readability */
+            }
+
+            h3 {
+                font-size: 1.2em;  /* Slightly smaller title on mobile */
+            }
         }
     </style>
 </head>
@@ -87,6 +128,7 @@
             <button onclick="appendToDisplay('+')">+</button>
         </div>
     </div>
+
     <script>
         // Function to append the clicked value to the display
         function appendToDisplay(value) {
@@ -110,3 +152,4 @@
     </script>
 </body>
 </html>
+
