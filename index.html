@@ -43,22 +43,44 @@
             box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);
         }
 
-        #display, #clear {
-            width: 100%;
-            border-radius: 5px;
+       
+        #clear{
+            width: 60px;
             height: 45px;
+            border-radius: 8px;
+            background-color: honeydew;
+            color: black;
+            padding: 4.5px;
+            margin: 4.5px;
+            border: 4.5pt solid white;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: 0 12px 22.5px rgba(0, 0, 0, 0.2);
+        }
+
+        #display{
+            border-radius: 5px;
+            height:20px;
+            width:170px;
             color: black;
             text-align: right;
             font-size: 1.2em;
             padding: 10px;
+            margin:auto;
         }
 
+        #ind
+        {
+
+        display: flex;
+        flex-direction: row;
+        }
         .row {
             display: flex;
             justify-content: space-between;
         }
 
-        .row button {
+        .row button{
             flex: 1; /* Makes buttons expand equally */
             font-size: 1.2em;
         }
@@ -85,8 +107,9 @@
                 margin: 3px;
             }
 
-            #display {
+         #display {
                 font-size: 1.5em; /* Increase font size for better readability */
+               
             }
 
             h3 {
